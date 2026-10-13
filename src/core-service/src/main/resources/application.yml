@@ -2,12 +2,7 @@ spring:
   application:
     name: core-service
 
-  # Bật Virtual Threads (Java 21) để tối ưu chịu tải đồng thời
-  threads:
-    virtual:
-      enabled: true
-
-  # Kết nối PostgreSQL (trùng với docker-compose.yml ở thư mục gốc)
+  # Cấu hình kết nối PostgreSQL
   datasource:
     url: jdbc:postgresql://localhost:5432/flashsale_db
     username: root
@@ -23,7 +18,7 @@ spring:
       hibernate:
         format_sql: true
 
-  # Kết nối Redis
+  # Cấu hình Redis
   data:
     redis:
       host: localhost
