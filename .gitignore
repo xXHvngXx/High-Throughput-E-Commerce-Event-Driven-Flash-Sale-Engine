@@ -1,0 +1,28 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.iml
+
+# Environment & Secrets
+.env
+*.local
+
+# Logs
+*.log
+logs/
+
+# Build artifacts
+target/
+build/
+bin/
+obj/
+dist/
+vendor/
+
+# Docker volumes
+docker-data/
