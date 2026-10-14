@@ -47,8 +47,8 @@ class InventoryConcurrencyTest {
     @Test
     void deductStock_underConcurrency_shouldNeverOversell() throws InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
-        // ready: đếm số task đã sẵn sàng (đã được nạp vào pool)
-        CountDownLatch ready = new CountDownLatch(TOTAL_REQUESTS);
+        // Chỉ các worker đang chạy mới có thể sẵn sàng; các task còn lại đang nằm trong queue.
+        CountDownLatch ready = new CountDownLatch(THREAD_POOL_SIZE);
         // start: "súng lệnh" xuất phát, mọi task chờ ở đây rồi cùng chạy khi countDown()
         CountDownLatch start = new CountDownLatch(1);
         // done: đếm số task đã xử lý xong để main thread biết khi nào đọc kết quả
