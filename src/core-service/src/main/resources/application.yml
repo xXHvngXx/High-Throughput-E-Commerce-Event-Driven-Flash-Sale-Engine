@@ -24,5 +24,21 @@ spring:
       host: localhost
       port: 6379
 
+  # Cấu hình RabbitMQ
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        # Chỉ 1 consumer ghi DB: ghi tuần tự nên không xung đột @Version
+        concurrency: 1
+        max-concurrency: 1
+        # Lỗi tạm thời thì thử lại tối đa 5 lần
+        retry:
+          enabled: true
+          max-attempts: 5
+
 server:
   port: 8080
